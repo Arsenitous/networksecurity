@@ -16,7 +16,7 @@ from networksecurity.entity.artifact_entity import (
 )
 
 from networksecurity.entity.config_entity import DataTransformationConfig
-from networksecurity.exception.exception import CustomException as NetworkSecurityException
+from networksecurity.exception.exception import CustomException
 from networksecurity.logging.logger import logging
 from networksecurity.utils.main_utils.utils import save_numpy_array_data, save_object
 
@@ -35,14 +35,14 @@ class DataTransformation:
                 data_transformation_config
             )
         except Exception as e:
-            raise NetworkSecurityException(e, sys)
+            raise CustomException(e, sys)
 
     @staticmethod
     def read_data(file_path) -> pd.DataFrame:
         try:
             return pd.read_csv(file_path)
         except Exception as e:
-            raise NetworkSecurityException(e, sys)
+            raise CustomException(e, sys)
 
     def get_data_transformer_object(cls) -> Pipeline:
         """
@@ -66,7 +66,7 @@ class DataTransformation:
             processor: Pipeline = Pipeline([("imputer", imputer)])
             return processor
         except Exception as e:
-            raise NetworkSecurityException(e, sys)
+            raise CustomException(e, sys)
 
     def initiate_data_transformation(self) -> DataTransformationArtifact:
         logging.info(
@@ -137,4 +137,4 @@ class DataTransformation:
             return data_transformation_artifact
 
         except Exception as e:
-            raise NetworkSecurityException(e, sys)
+            raise CustomException(e, sys)

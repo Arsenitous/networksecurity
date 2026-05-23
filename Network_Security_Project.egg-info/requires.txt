@@ -8,3 +8,5 @@ pymongo[srv]
 pymongo
 certifi
 pyyaml
+mlflow
+dagshub
