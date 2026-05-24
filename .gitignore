@@ -221,3 +221,4 @@ __marimo__/
 Artifacts/
 final_model/
 logs/
+prediction_output/
